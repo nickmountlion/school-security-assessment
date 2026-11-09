@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>School Security Assessment | Case study</title>
+<meta name="description" content="Case study: a 48-control information security assessment for an independent K-12 school, covering cloud, on-premises hardware and software services, turned into a 12-month board roadmap.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Information security assessment for an independent K-12 school">
+<meta property="og:description" content="48 controls across 10 domains, a risk scale calibrated to a school, and a 12-month roadmap presented to the board.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#f6f7f4;--surface:#ffffff;--fg:#17211f;--muted:#5b6865;--line:#d9dfdb;--accent:#0f5c4d;--crit:#b3402a;--warn:#c58a1b;--ok:#2f7d5b;--on-rate:#ffffff;--on-warn:#1f1700;
+--display:'Bricolage Grotesque','Segoe UI',sans-serif;--body:'IBM Plex Sans','Segoe UI',sans-serif;--mono:'IBM Plex Mono',Consolas,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1715;--surface:#16211e;--fg:#e6ece9;--muted:#9aaaa5;--line:#2a3a36;--accent:#5fc2a8;--crit:#e47a63;--warn:#e0b050;--ok:#64c298;--on-rate:#0f1715;--on-warn:#0f1715;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:920px;margin:0 auto;display:grid;gap:48px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:700}
+h2{font-size:1.5rem}h3{font-size:1.05rem}
+.eyebrow,.k{font:500 .75rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:0;max-width:65ch}
+header,section{display:grid;gap:14px;min-width:0}
+.lede{font-size:1.15rem;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.facts div{background:var(--surface);padding:14px;display:grid;gap:4px}
+.facts b{font:700 1.5rem var(--display);font-variant-numeric:tabular-nums}
+.bar{display:flex;height:34px;border-radius:3px;overflow:hidden;font:500 .85rem var(--mono);color:var(--on-rate)}
+.bar span{display:grid;place-items:center;min-width:0}
+.c{background:var(--crit)}.w{background:var(--warn);color:var(--on-warn)}.o{background:var(--ok)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted);font-size:.9rem}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:var(--sw)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.col{background:var(--surface);border:1px solid var(--line);padding:16px;display:grid;gap:8px;align-content:start;min-width:0}
+.col.rate{border-left:4px solid var(--sw)}
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);counter-reset:s}
+.steps li{background:var(--surface);padding:14px;display:grid;gap:6px;align-content:start;counter-increment:s;font-size:.92rem}
+.steps li::before{content:"0" counter(s);font:500 .75rem var(--mono);color:var(--accent)}
+.steps b{font-family:var(--display);font-size:1.05rem}
+.stack{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.stack>div{background:var(--surface);padding:12px 14px;display:grid;grid-template-columns:150px 1fr;gap:6px 14px;align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{border:1px solid var(--line);border-radius:3px;padding:2px 8px;font-size:.86rem;background:var(--bg)}
+@media (max-width:560px){.stack>div{grid-template-columns:1fr}}
+.wrap{overflow-x:auto;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font:500 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td:first-child{font-weight:500}
+ul{margin:0;padding-left:1.1em;display:grid;gap:4px}
+.fit{border-top:2px solid var(--accent);padding-top:18px}
+small{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<header>
+<span class="eyebrow">Case study · Education sector</span>
+<h1>Information security assessment for an independent K-12 school</h1>
+<p class="lede">A full review of cloud, on-premises hardware and software services, calibrated to a school's real risks, then turned into a 12-month roadmap for the board.</p>
+<small>Facundo Montefalcone, security and technology advisor. Client name and individual findings are withheld.</small>
+</header>
+
+<div class="facts">
+<div><b>~1,000</b><span class="k">Users, mostly students</span></div>
+<div><b>~350</b><span class="k">Devices</span></div>
+<div><b>18</b><span class="k">Systems and platforms</span></div>
+<div><b>10</b><span class="k">Security domains</span></div>
+<div><b>48</b><span class="k">Controls rated</span></div>
+<div><b>12 mo</b><span class="k">Roadmap horizon</span></div>
+</div>
+
+<section>
+<h2>How the engagement ran</h2>
+<ol class="steps">
+<li><b>Discover</b>Reviewed the school's technical documentation with the IT team: users, devices, network, servers, systems and hosting.</li>
+<li><b>Assess</b>Ran a 48-question control questionnaire across 10 domains. Every answer got a red, yellow or green rating.</li>
+<li><b>Calibrate</b>Reviewed the IT team's corrective actions and re-rated findings against a scale written for a school.</li>
+<li><b>Plan</b>Wrote the diagnosis, the technical proposal and the action plan with owners, priorities and time frames.</li>
+<li><b>Present</b>Took the plan to the board with four decisions to approve.</li>
+</ol>
+<p><span class="k">Deliverables</span><br>Gap analysis register, corrective-action memo, diagnostic deck, technology plan report, board deck.</p>
+</section>
+
+<section>
+<h2>The environment assessed</h2>
+<div class="stack">
+<div><span class="k">People and devices</span><div class="chips"><span>Students</span><span>Teachers and staff</span><span>Staff laptops and desktops</span><span>Shared tablets</span><span>Lab laptops</span><span>Personal devices</span></div></div>
+<div><span class="k">Software services</span><div class="chips"><span>Learning management</span><span>Academic management and gradebook</span><span>Admissions</span><span>Administration and billing</span><span>Family communication</span><span>Help desk</span><span>Alumni</span><span>Extracurricular enrolment</span><span>Custom web applications</span></div></div>
+<div><span class="k">Cloud</span><div class="chips"><span>Productivity suites</span><span>Self-hosted cloud servers</span><span>Hosted websites</span><span>Cloud backup</span><span>Central cloud database (planned)</span></div></div>
+<div><span class="k">On-premises</span><div class="chips"><span>Directory and file services</span><span>Virtualisation</span><span>NAS backup</span><span>Managed switching</span><span>Managed Wi-Fi</span><span>UPS</span><span>Server room and racks</span><span>CCTV</span></div></div>
+<div><span class="k">Network</span><div class="chips"><span>Redundant internet links</span><span>SD-WAN firewall</span><span>Segmented LANs and VLANs</span><span>VPN for remote access</span></div></div>
+</div>
+</section>
+
+<section>
+<h2>Result: 48 controls across 10 domains</h2>
+<div class="bar" role="img" aria-label="15 critical gaps, 23 partial controls, 10 effective controls">
+<span class="c" style="flex:15">15</span><span class="w" style="flex:23">23</span><span class="o" style="flex:10">10</span></div>
+<div class="legend"><span style="--sw:var(--crit)">Critical gaps</span><span style="--sw:var(--warn)">Partial controls</span><span style="--sw:var(--ok)">Effective controls</span></div>
+<p>First-pass ratings, before calibration. The school had a real security base, applied unevenly. Individual findings stay with the client; the table shows what each domain tested.</p>
+<div class="wrap"><table>
+<thead><tr><th>Domain</th><th>What was tested</th></tr></thead>
+<tbody>
+<tr><td>Network and perimeter</td><td>Internet exposure of services, public address inventory, remote-management paths, rules between segments, admission of devices to wired and wireless networks.</td></tr>
+<tr><td>Access and MFA</td><td>Multi-factor authentication for staff and administrators, password policy, privileged access paths, offboarding.</td></tr>
+<tr><td>Endpoints</td><td>User privileges, removable media, management of malware protection, mobile device management, disk encryption.</td></tr>
+<tr><td>Patching and vulnerabilities</td><td>Patch cadence, vulnerability scanning, updates of self-hosted applications, end-of-life components.</td></tr>
+<tr><td>Data protection</td><td>Encryption at rest, external file sharing, classification and access tiers, review of custom applications, API authentication.</td></tr>
+<tr><td>Backup and recovery</td><td>Separation of backups from redundancy, immutability, isolation of backup storage, restore testing, recovery objectives.</td></tr>
+<tr><td>Incident response</td><td>Response plan, exercises, central logging, log retention and alerting, breach-notification duties.</td></tr>
+<tr><td>Physical security</td><td>Server room and rack access, monitoring of power protection, screen locking.</td></tr>
+<tr><td>Third parties</td><td>Vendor security review, data processing agreements, external provider access, parental consent for platforms.</td></tr>
+<tr><td>Governance and awareness</td><td>Awareness training, phishing simulation, acceptable-use policy, data-protection compliance.</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>Calibrating risk to a school</h2>
+<p>Corporate benchmarks do not fit a school with non-technical users, mixed-ownership devices and a small IT team. I wrote a rating scale for the school, then re-rated each finding against the IT team's evidence.</p>
+<div class="cols">
+<div class="col rate" style="--sw:var(--crit)"><h3>Critical</h3><p>Exposure of minors' data, uncontrolled remote access, or total loss of backups.</p></div>
+<div class="col rate" style="--sw:var(--warn)"><h3>Accepted with conditions</h3><p>Acceptable when documented and reviewed every year.</p></div>
+<div class="col rate" style="--sw:var(--ok)"><h3>Controlled</h3><p>Control in place and evidenced.</p></div>
+</div>
+<div class="cols">
+<div class="col"><span class="k">Proportionate by design</span><ul><li>Strong authentication scoped by how sensitive a role's data is, not rolled out to everyone at once</li><li>Sharing restrictions tied to classification labels, not a global block that stops daily work</li><li>No central management of students' personal devices: operational and legal limits</li><li>Physical controls sized to the institution, with periodic access reviews</li></ul></div>
+<div class="col"><span class="k">Govern before buying</span><ul><li>Use the firewall, cloud admin console and directory policies the school already owns</li><li>Most priority actions fit inside existing licences</li><li>Lightweight evidence: a one-page incident checklist, an update register, a logged yearly restore test</li><li>Accepted risks written down and reviewed yearly with leadership</li></ul></div>
+</div>
+</section>
+
+<section>
+<h2>The 12-month roadmap</h2>
+<div class="wrap"><table>
+<thead><tr><th>Initiative</th><th>Priority</th><th>Horizon</th><th>Owners</th></tr></thead>
+<tbody>
+<tr><td>Security and data protection hardening</td><td>High</td><td>0 to 3 months</td><td>Leadership, IT, administration</td></tr>
+<tr><td>Gradebook usability improvements</td><td>High</td><td>0 to 3 months</td><td>Academic leadership, IT, vendor</td></tr>
+<tr><td>Digital staff records</td><td>Medium-high</td><td>0 to 6 months</td><td>HR, administration, IT</td></tr>
+<tr><td>New admissions system</td><td>High</td><td>3 to 6 months</td><td>Leadership, admissions, administration, IT</td></tr>
+<tr><td>Extracurricular enrolment automation</td><td>Medium</td><td>3 to 9 months</td><td>Administration, academic areas, IT</td></tr>
+<tr><td>Unified central database in the cloud</td><td>Strategic</td><td>6 to 12 months</td><td>Leadership, IT, administration, user areas</td></tr>
+</tbody></table></div>
+<div class="cols">
+<div class="col"><span class="k">Prioritisation criteria</span><ul><li>Cut critical security and data risk first</li><li>Remove high-impact friction for teachers and administration</li><li>Reuse infrastructure and tools already owned</li><li>Favour what integrates, scales and the team can sustain</li></ul></div>
+<div class="col"><span class="k">What the board was asked to decide</span><ul><li>Start of the security actions and the immediate usability fixes</li><li>Selection criteria for admissions: extend, buy or build</li><li>Design of the central data architecture</li><li>An internal owner per workstream and a preliminary budget for specialists</li></ul></div>
+</div>
+</section>
+
+<section class="fit">
+<h2>How it transfers to higher education</h2>
+<p>Scale differs, the method does not. The ten domains line up with what a US college or university answers to: FERPA for student records, and the GLBA Safeguards Rule for financial aid data.</p>
+<div class="wrap"><table>
+<thead><tr><th>Safeguards Rule element</th><th>Where the assessment covers it</th></tr></thead>
+<tbody>
+<tr><td>Written risk assessment</td><td>48-control gap register with rated, calibrated risks</td></tr>
+<tr><td>Access controls and multi-factor authentication</td><td>Access and MFA domain</td></tr>
+<tr><td>Encryption and data inventory</td><td>Data protection domain, classification tiers</td></tr>
+<tr><td>Monitoring and vulnerability assessment</td><td>Patching and vulnerabilities, logging in incident response</td></tr>
+<tr><td>Security awareness training</td><td>Governance and awareness domain</td></tr>
+<tr><td>Service provider oversight</td><td>Third parties domain</td></tr>
+<tr><td>Incident response plan</td><td>Incident response domain</td></tr>
+<tr><td>Regular reporting to the board</td><td>Board deck with decisions and owners</td></tr>
+</tbody></table></div>
+<small>Client, staff and vendor names, addresses, system configurations and individual findings are withheld.</small>
+</section>
+</main>
+</body>
+</html>
